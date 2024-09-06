@@ -1,4 +1,4 @@
-﻿namespace BookManager.Models
+﻿namespace ProgrammeringAPL.Models
 {
     public class Book
     {
