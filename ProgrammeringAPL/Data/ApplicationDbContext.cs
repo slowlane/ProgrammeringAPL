@@ -11,5 +11,7 @@ namespace ProgrammeringAPL.Data
             : base(options)
         {
         }
+        public DbSet<ProgrammeringAPL.Models.ToDoItem> ToDoItem { get; set; } = default!;
+        //public DbSet<ProgrammeringAPL.Models.ContactFormModel> ContactFormModel { get; set; }
     }
 }

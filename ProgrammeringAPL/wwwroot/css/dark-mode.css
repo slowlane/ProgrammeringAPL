@@ -1,5 +1,4 @@
 ﻿
-/* Base Styles */
 body {
     background-color: #121212;
     color: #E0E0E0;
@@ -7,7 +6,7 @@ body {
     padding: 0;
 }
 
-/* Header */
+
 header {
     background-color: #1F1F1F;
     padding: 20px;
@@ -15,14 +14,13 @@ header {
     border-bottom: 1px solid #333;
 }
 
-    header h1 {
-        color: #FFFFFF;
-        margin: 0;
-        font-size: 2.5em;
-        font-weight: normal;
-    }
+header h1 {
+    color: #FFFFFF;
+    margin: 0;
+    font-size: 2.5em;
+    font-weight: normal;
+}
 
-/* Navbar */
 nav {
     background-color: #1F1F1F;
     border-bottom: 1px solid #333;
@@ -36,35 +34,34 @@ nav {
     justify-content: center;
 }
 
-    .navbar li {
-        margin: 0;
-    }
+.navbar li {
+    margin: 0;
+}
 
-        .navbar li a {
-            display: block;
-            padding: 15px 25px;
-            color: #E0E0E0;
-            text-decoration: none;
-            font-size: 1.1em;
-            transition: background-color 0.3s, color 0.3s;
-        }
+.navbar li a {
+    display: block;
+    padding: 15px 25px;
+    color: #E0E0E0;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: background-color 0.3s, color 0.3s;
+}
 
-            .navbar li a:hover {
-                background-color: #333333;
-                color: #FFFFFF;
-            }
+.navbar li a:hover {
+    background-color: #333333;
+    color: #FFFFFF;
+}
 
-/* Links */
 a {
     color: #BB86FC;
     text-decoration: none;
 }
 
-    a:hover {
-        text-decoration: underline;
-    }
+a:hover {
+    text-decoration: underline;
+}
 
-/* Footer */
+
 footer {
     background-color: #1F1F1F;
     padding: 20px;
@@ -72,20 +69,19 @@ footer {
     border-top: 1px solid #333;
 }
 
-    footer p {
-        color: #666666;
-        margin: 0;
-        font-size: 0.9em;
-    }
+footer p {
+    color: #666666;
+    margin: 0;
+    font-size: 0.9em;
+}
 
-/* Scrollbar Styling */
 ::-webkit-scrollbar {
     width: 10px;
 }
 
-    ::-webkit-scrollbar:hover {
-        width: 15px;
-    }
+::-webkit-scrollbar:hover {
+    width: 15px;
+}
 
 ::-webkit-scrollbar-track {
     background: #1F1F1F;
@@ -96,11 +92,11 @@ footer {
     border-radius: 5px;
 }
 
-    ::-webkit-scrollbar-thumb:hover {
-        background: #444444;
-    }
+::-webkit-scrollbar-thumb:hover {
+    background: #444444;
+}
 
-/* Media Queries */
+
 @media (max-width: 768px) {
     .navbar li a {
         padding: 15px 15px;

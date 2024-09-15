@@ -1,8 +1,33 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<head>
+    <link rel="stylesheet" href="~/css/carousel-style.css">
+</head>
+<div class="carousel-container">
+    <div class="carousel">
+        <!-- Add as many images as you like -->
+        <div class="carousel-item">
+            <img src="~/images/bild1.jpg" alt="Image 1" tabindex="0">
+        </div>
+        <div class="carousel-item">
+            <img src="~/images/bild2.jpg" alt="Image 2" tabindex="0">
+        </div>
+        <div class="carousel-item">
+            <img src="~/images/bild3.jpg" alt="Image 3" tabindex="0">
+        </div>
+        <!-- More carousel items -->
+    </div>
 </div>
+
+<!-- Other elements -->
+
+<section id="projekt">
+    <h2>Mina projekt</h2>
+    <ul>
+        <li>Projekt 1: Python-algoritmer</li>
+        <li>Projekt 2: Webbutveckling</li>
+    </ul>
+</section>
+
+<script src="~/js/script.js"></script>

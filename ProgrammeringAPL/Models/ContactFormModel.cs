@@ -3,7 +3,6 @@
 namespace ProgrammeringAPL.Models
 {
     
-
     public class ContactFormModel
     {
         [Required(ErrorMessage = "Namn krävs.")]

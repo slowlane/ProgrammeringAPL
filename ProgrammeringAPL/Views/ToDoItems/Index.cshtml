@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ProgrammeringAPL.Models.ToDoItem>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<head>
+    <link rel="stylesheet" href="~/css/todo.css">
+</head>
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Skapa ny ToDo</a>
+</p>
+<table id="todo"  class="table">
+    <thead>
+        <tr>
+            <th>
+                ToDo<!-- @Html.DisplayNameFor(model => model.Task)-->
+            </th>
+            <th>
+                Utförd<!--@Html.DisplayNameFor(model => model.IsComplete)-->
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Task)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsComplete)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Ändra</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detaljer</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Ta bort</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

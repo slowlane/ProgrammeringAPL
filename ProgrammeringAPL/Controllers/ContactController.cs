@@ -14,12 +14,11 @@ namespace ProgrammeringAPL.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Hantera inlämningen, t.ex. skicka e-post eller spara till en databas
+                
                 ViewBag.Message = "Formuläret skickades korrekt!";
-                return View("Success"); // Laddar en vy som bekräftar inlämningen
+                return View("Success");
             }
 
-            // Om något är felaktigt, skicka tillbaka formuläret med felmeddelanden
             return View("Index", model);
         }
     }
