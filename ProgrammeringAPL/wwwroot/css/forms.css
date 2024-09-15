@@ -1,0 +1,51 @@
+﻿form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+    form label {
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #BB86FC;
+    }
+
+    form input[type="text"],
+    form input[type="email"],
+    form textarea {
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 1px solid #333333;
+        border-radius: 5px;
+        background-color: #2C2C2C;
+        color: #E0E0E0;
+    }
+
+        form input[type="text"]:focus,
+        form input[type="email"]:focus,
+        form textarea:focus {
+            border-color: #BB86FC;
+            outline: none;
+        }
+
+    form input[type="submit"] {
+        padding: 12px 25px;
+        max-width: 20%;
+        border: none;
+        border-radius: 5px;
+        background-color: #BB86FC;
+        color: #FFFFFF;
+        cursor: pointer;
+        font-size: 1.1em;
+        transition: background-color 0.3s;
+    }
+
+        form input[type="submit"]:hover {
+            background-color: #9A67EA;
+        }
+
+    form textarea {
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 8px;
+    }

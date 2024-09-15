@@ -1,0 +1,34 @@
+﻿@model ProgrammeringAPL.Models.ContactFormModel
+
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontaktformulär</title>
+    <link rel="stylesheet" href="~/css/forms.css">
+</head>
+<body>
+
+    <div id="kontakt">
+        <h2>Kontakt</h2>
+        <form asp-action="Submit" method="post" id="contactForm" onsubmit="return validateForm()">
+            <label for="name">Namn:</label>
+            <input type="text" id="name" name="name" value="@Model.Name" required>
+            <span asp-validation-for="Name" class="text-danger"></span>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="@Model.Email" required>
+            <span asp-validation-for="Email" class="text-danger"></span>
+
+            <label for="message">Meddelande:</label>
+            <textarea id="message" name="message" required>@Model.Message</textarea>
+            <span asp-validation-for="Message" class="text-danger"></span>
+
+            <input type="submit" value="Skicka">
+        </form>
+    </div>
+
+    <script src="~/js/form-validation.js"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+﻿
+/* Base Styles */
+body {
+    background-color: #121212;
+    color: #E0E0E0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+header {
+    background-color: #1F1F1F;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #333;
+}
+
+    header h1 {
+        color: #FFFFFF;
+        margin: 0;
+        font-size: 2.5em;
+        font-weight: normal;
+    }
+
+/* Navbar */
+nav {
+    background-color: #1F1F1F;
+    border-bottom: 1px solid #333;
+}
+
+.navbar {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+    .navbar li {
+        margin: 0;
+    }
+
+        .navbar li a {
+            display: block;
+            padding: 15px 25px;
+            color: #E0E0E0;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+            .navbar li a:hover {
+                background-color: #333333;
+                color: #FFFFFF;
+            }
+
+/* Links */
+a {
+    color: #BB86FC;
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+/* Footer */
+footer {
+    background-color: #1F1F1F;
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #333;
+}
+
+    footer p {
+        color: #666666;
+        margin: 0;
+        font-size: 0.9em;
+    }
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+    ::-webkit-scrollbar:hover {
+        width: 15px;
+    }
+
+::-webkit-scrollbar-track {
+    background: #1F1F1F;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333333;
+    border-radius: 5px;
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #444444;
+    }
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .navbar li a {
+        padding: 15px 15px;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    section {
+        margin: 20px 10px;
+        padding: 30px 15px;
+    }
+
+    #todo input[type="text"] {
+        width: calc(100% - 110px);
+    }
+}
