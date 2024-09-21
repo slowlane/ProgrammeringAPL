@@ -1,13 +1,14 @@
-﻿using System;
+﻿
+// File: ViewModels/ProjectViewModel.cs
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Http; // If handling file uploads
 
-namespace ProgrammeringAPL.Models
+namespace ProgrammeringAPL.Models.ViewModels
 {
-    public class Project
+    public class ProjectViewModel
     {
-        [Key]
         public int Id { get; set; }
 
         [Required]
@@ -31,8 +32,6 @@ namespace ProgrammeringAPL.Models
         [Display(Name = "Demo URL")]
         public string? DemoUrl { get; set; }
 
-        public List<Technology> Technologies { get; set; }
-
         [DataType(DataType.Date)]
         [Display(Name = "Created Date")]
         public DateTime CreatedDate { get; set; }
@@ -42,57 +41,49 @@ namespace ProgrammeringAPL.Models
         public DateTime? LastUpdated { get; set; }
 
 
-        public List<Tag> Tags { get; set; }
 
-        public List<GalleryImage> Gallery { get; set; }
+
+        // Related Entities
+        public List<TechnologyViewModel> Technologies { get; set; } = new List<TechnologyViewModel>();
+        public List<TagViewModel> Tags { get; set; } = new List<TagViewModel>();
+        public List<GalleryImageViewModel> Gallery { get; set; } = new List<GalleryImageViewModel>();
+
+        // Optional: For file uploads in Gallery Images
+        // public List<IFormFile> GalleryImages { get; set; } = new List<IFormFile>();
     }
 
-    public class Technology
+    public class TechnologyViewModel
     {
-        [Key]
         public int TechnologyId { get; set; }
 
         [Required]
         [StringLength(50)]
         public string Name { get; set; }
-
-        // Navigation property
-        public int ProjectId { get; set; }
-        public Project Project { get; set; }
     }
 
-    public class Tag
+    public class TagViewModel
     {
-        [Key]
         public int TagId { get; set; }
 
         [Required]
         [StringLength(30)]
         public string Name { get; set; }
-
-        // Navigation property
-        public int ProjectId { get; set; }
-        public Project Project { get; set; }
     }
 
-    public class GalleryImage
+    public class GalleryImageViewModel
     {
-        [Key]
         public int GalleryImageId { get; set; }
 
-        [StringLength(500)]
-        public string ImagePath { get; set; }
-
-        [NotMapped]
-        [Required(ErrorMessage = "Please upload an image.")]
-        public IFormFile ImageFile { get; set; }
-
+        //[Required]
+        //[StringLength(500)]
+        //public string ImageUrl { get; set; }
 
         [StringLength(200)]
         public string Caption { get; set; }
-
-        // Navigation property
-        public int ProjectId { get; set; }
-        public Project Project { get; set; }
+        
+        [Required(ErrorMessage = "Please upload an image.")]
+        [DataType(DataType.Upload)]
+        public IFormFile ImageFile { get; set; }
     }
 }
+
