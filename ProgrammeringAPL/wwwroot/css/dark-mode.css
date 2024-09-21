@@ -1,7 +1,7 @@
 ﻿
 body {
-    background-color: #121212;
-    color: #E0E0E0;
+    background-color: #121212 !important;
+    color: #E0E0E0 !important;
     margin: 0;
     padding: 0;
 }
@@ -60,6 +60,7 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
 
 
 footer {
