@@ -7,6 +7,7 @@
     overflow: hidden;
     background-color: #000000;
     border-radius: 10px;
+    margin-top: 5%;
 }
 
 .carousel {
@@ -14,13 +15,13 @@
     margin: 0 auto;
     width: 100%;
     max-width: 750px;
-    height: 200px; 
+    height: 400px; 
 }
 
 .carousel-item {
     position: absolute;
     top: 0;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.7s ease-in-out;
     opacity: 0;
 }
 
@@ -68,6 +69,10 @@
 .carousel-item.left,
 .carousel-item.right {
     z-index: 1;
+}
+
+.carousel-caption-primary > .carousel-caption {
+    margin-top: 15%;
 }
 
 .container {

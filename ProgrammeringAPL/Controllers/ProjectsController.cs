@@ -43,6 +43,7 @@ namespace ProgrammeringAPL.Controllers
             }
 
             var project = await _context.Projects
+                .Include(p => p.Gallery)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (project == null)
             {
@@ -55,8 +56,9 @@ namespace ProgrammeringAPL.Controllers
         // GET: Projects/Create
         public IActionResult Create()
         {
+
             var viewModel = new ProjectViewModel();
-            // Initialize with one empty Technology, Tag, GalleryImage if desired
+
             viewModel.Technologies.Add(new TechnologyViewModel());
             viewModel.Tags.Add(new TagViewModel());
             viewModel.Gallery.Add(new GalleryImageViewModel());
@@ -73,7 +75,7 @@ namespace ProgrammeringAPL.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Map ViewModel to Domain Model
+
                 var project = new Project
                 {
                     Title = viewModel.Title,
@@ -113,7 +115,7 @@ namespace ProgrammeringAPL.Controllers
                             ModelState.AddModelError("Gallery", "File size should be less than 2 MB.");
                             return View(viewModel);
                         }
-                        // Save the uploaded image
+
                         var imagePath = await SaveImageAsync(galleryVM.ImageFile);
 
                         var galleryImage = new GalleryImage
@@ -126,14 +128,14 @@ namespace ProgrammeringAPL.Controllers
                     }
                 }
 
-                // Add to DbContext
+
                 _context.Add(project);
                 await _context.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
 
-            // If ModelState is invalid, return the same view with the current ViewModel to display validation errors
+
             return View(viewModel);
 
 

@@ -22,12 +22,10 @@
                 <div class="card mb-4 shadow-sm">
                     @if (project.Gallery != null && project.Gallery.Any())
                     {
-                        <!-- Display the first image in the gallery -->
                         <img src="@project.Gallery.First().ImagePath" class="card-img-top" alt="@project.Title">
                     }
                     else
                     {
-                        <!-- Placeholder image if no images are available -->
                         <img src="~/images/placeholder.png" class="card-img-top" alt="No image available">
                     }
 

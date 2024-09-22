@@ -1,4 +1,4 @@
-﻿<!--model ProgrammeringAPL.Models.Project -->
+﻿
 @model ProgrammeringAPL.Models.ViewModels.ProjectViewModel
 @{
     ViewData["Title"] = "Create";
@@ -25,7 +25,7 @@
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
 
-    <!-- Other Project fields -->
+
 
     <h3>Technologies</h3>
     <div id="technologies">
@@ -82,9 +82,9 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
     <script>
-        // JavaScript/jQuery to handle adding/removing Technology, Tag, Gallery items
+        
         $(document).ready(function () {
-            // Technologies
+          
             $('#add-technology').click(function () {
                 var index = $('#technologies .technology-item').length;
                 var template = `
@@ -98,10 +98,10 @@
 
             $(document).on('click', '.remove-technology', function () {
                 $(this).parent().remove();
-                // Optionally, reindex the remaining items
+             
             });
 
-            // Tags
+         
             $('#add-tag').click(function () {
                 var index = $('#tags .tag-item').length;
                 var template = `
@@ -117,7 +117,7 @@
                 $(this).parent().remove();
             });
 
-            // Gallery Images
+      
             $('#add-gallery').click(function () {
                 var index = $('#gallery .gallery-item').length;
                 var template = `

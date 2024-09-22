@@ -45,7 +45,24 @@ button {
 }
 
 h1, h2 {
-    margin: 10px;
+    color: #FFFFFF;
+    font-size: 2em;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #BB86FC;
+    padding-bottom: 10px;
+}
+
+dt {
+    font-weight: 700;
+    font-size: 1.2em;
+    color: purple;
+
+}
+
+dl {
+    margin: 20px auto;
+    max-width: 70%;
+    text-align: left;
 }
 
 /* header, nav, .carousel-container {
