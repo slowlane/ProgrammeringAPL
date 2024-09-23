@@ -61,7 +61,34 @@ a:hover {
     text-decoration: underline;
 }
 
+button {
+    padding: 12px 25px;
+    max-width: 200px;
+    min-width: 100px;
+    border: none;
+    border-radius: 5px;
+    background-color: #BB86FC;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s;
+    display: block;
+}
 
+.btn-danger {
+    background-color: #121212;
+    color: #dc3545;
+    border: 1px solid;
+    border-color: #dc3545;
+}
+
+.btn-success {
+    margin: 50px auto;
+    background-color: #00bf7d;
+    font-size: 1.2em;
+    width: 150px;
+
+}
 
 footer {
     background-color: #1F1F1F;

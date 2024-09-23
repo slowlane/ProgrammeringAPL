@@ -69,3 +69,24 @@ div.form-group {
     text-align: left;
 }
 
+#project-create-form {
+    margin: 0 auto;
+}
+
+.custom-file-upload {
+    display: inline-block;
+    padding: 8px 20px;
+    cursor: pointer;
+    background-color: #3994eb;
+    color: white;
+    border-radius: 4px;
+}
+
+.file-input {
+    display: none;
+}
+
+
+.custom-file-upload:hover {
+    background-color: #a260d4;
+}

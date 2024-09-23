@@ -12,7 +12,7 @@
 
 <h4>Project</h4>
 <hr />
-<form asp-action="Create" method="post" enctype="multipart/form-data">
+<form asp-action="Create" method="post" enctype="multipart/form-data" id="project-create-form">
     <div asp-validation-summary="All" class="text-danger"></div>
     <div class="form-group">
         <label asp-for="Title"></label>
@@ -27,38 +27,44 @@
 
 
 
-    <h3>Technologies</h3>
-    <div id="technologies">
-        <div id="technologies">
+   
+    <div id="technologies" class="form-group">
+        <div id="technologies" >
+            <label asp-for="Technologies"></label>
             @for (int i = 0; i < Model.Technologies.Count; i++)
             {
                 @Html.Partial("_TechnologyEditor", Model.Technologies[i])
             }
         </div>
-        <button type="button" class="btn btn-primary" id="add-technology">Add Technology</button>
+        <button type="button" class="btn btn-primary" id="add-technology">Add Tech</button>
     </div>
 
 
-    <h3>Tags</h3>
-    <div id="tags">
+    <div id="tags" class="form-group">
         @for (int i = 0; i < Model.Tags.Count; i++)
         {
+            <label asp-for="Tags"></label>
             <div class="tag-item">
                 <input asp-for="Tags[@i].Name" class="form-control" placeholder="Tag Name" />
                 <span asp-validation-for="Tags[@i].Name" class="text-danger"></span>
                 <button type="button" class="btn btn-danger remove-tag">Remove</button>
             </div>
         }
+        <button type="button" class="btn btn-primary" id="add-tag">Add Tag</button>
     </div>
-    <button type="button" class="btn btn-primary" id="add-tag">Add Tag</button>
 
-    <h3>Gallery Images</h3>
-    <div id="gallery">
+
+
+    <div id="gallery" class="form-group">
         @for (int i = 0; i < Model.Gallery.Count; i++)
         {
+            
             <div class="gallery-item">
                 <label>Image File</label>
-                <input asp-for="Gallery[@i].ImageFile" type="file" class="form-control" />
+                <label for="file-upload" class="custom-file-upload">
+                    Choose File
+                </label>
+                <input asp-for="Gallery[@i].ImageFile" type="file" id="file-upload" class="file-input" />
                 <span asp-validation-for="Gallery[@i].ImageFile" class="text-danger"></span>
 
                 <label>Caption</label>
@@ -67,10 +73,12 @@
                 <button type="button" class="btn btn-danger remove-gallery">Remove</button>
             </div>
         }
+        <button type="button" class="btn btn-primary" id="add-gallery">Add Image</button>
     </div>
-    <button type="button" class="btn btn-primary" id="add-gallery">Add Gallery Image</button>
 
-    <button type="submit" class="btn btn-success">Create</button>
+    <div class="form-group">
+        <button type="submit" class="btn btn-success">Create</button>
+    </div>
 </form>
 
 <div>
