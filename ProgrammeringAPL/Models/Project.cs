@@ -31,7 +31,7 @@ namespace ProgrammeringAPL.Models
         [Display(Name = "Demo URL")]
         public string? DemoUrl { get; set; }
 
-        public List<Technology> Technologies { get; set; }
+        
 
         [DataType(DataType.Date)]
         [Display(Name = "Created Date")]
@@ -39,10 +39,12 @@ namespace ProgrammeringAPL.Models
 
         [DataType(DataType.Date)]
         [Display(Name = "Last Updated")]
-        public DateTime? LastUpdated { get; set; }
+        public DateTime LastUpdated { get; set; }
 
 
         public List<Tag> Tags { get; set; }
+
+        public List<Technology> Technologies { get; set; }
 
         public List<GalleryImage> Gallery { get; set; }
     }

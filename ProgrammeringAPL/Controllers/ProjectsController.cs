@@ -84,7 +84,7 @@ namespace ProgrammeringAPL.Controllers
                     RepositoryUrl = viewModel.RepositoryUrl,
                     DemoUrl = viewModel.DemoUrl,
                     CreatedDate = DateTime.Now,
-                    LastUpdated = viewModel.LastUpdated,
+                    LastUpdated = DateTime.Now,
                     Technologies = viewModel.Technologies
                         .Where(t => !string.IsNullOrWhiteSpace(t.Name))
                         .Select(t => new Technology { Name = t.Name })

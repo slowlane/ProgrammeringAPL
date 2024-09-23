@@ -38,7 +38,7 @@ namespace ProgrammeringAPL.Models.ViewModels
 
         [DataType(DataType.Date)]
         [Display(Name = "Last Updated")]
-        public DateTime? LastUpdated { get; set; }
+        public DateTime LastUpdated { get; set; }
 
 
 
