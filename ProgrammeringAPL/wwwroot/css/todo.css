@@ -1,5 +1,4 @@
-﻿/* ToDo */
-/* To-Do List */
+﻿
 #todo {
     padding: 40px 20px;
     margin: 40px auto;
@@ -9,13 +8,13 @@
     box-shadow: 0 0 15px #000;
 }
 
-#todo h2 {
+/*#todo h2 {
     color: #FFFFFF;
     font-size: 2em;
     margin-bottom: 20px;
     border-bottom: 2px solid #BB86FC;
     padding-bottom: 10px;
-}
+}*/
 
 #todo input[type="text"] {
     padding: 12px;
@@ -135,12 +134,7 @@ li button {
         background-color: darkred;
     }
 
-dt {
-    font-weight: 700;
-    font-size: 1.2em;
-    color: purple;
 
-}
 
 
 h4 {

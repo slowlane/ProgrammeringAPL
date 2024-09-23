@@ -1,24 +1,29 @@
 ﻿form {
+    margin: 20px auto;
     display: flex;
     flex-direction: column;
+    
 }
 
 
 form label {
     margin-bottom: 5px;
+    font-size: 1.2em;
     font-weight: bold;
     color: #BB86FC;
+    display: block;
 }
 
-form input[type="text"],
-form input[type="email"],
-form textarea {
+form input,
+form textarea
+{
     padding: 12px;
     margin-bottom: 20px;
     border: 1px solid #333333;
     border-radius: 5px;
     background-color: #2C2C2C;
     color: #E0E0E0;
+    min-width: 200px;
 }
 
 form input[type="text"]:focus,
@@ -59,3 +64,29 @@ div#kontakt label {
     text-align: left;
 }
 
+div.form-group {
+    margin: 5px auto;
+    text-align: left;
+}
+
+#project-create-form {
+    margin: 0 auto;
+}
+
+.custom-file-upload {
+    display: inline-block;
+    padding: 8px 20px;
+    cursor: pointer;
+    background-color: #3994eb;
+    color: white;
+    border-radius: 4px;
+}
+
+.file-input {
+    display: none;
+}
+
+
+.custom-file-upload:hover {
+    background-color: #a260d4;
+}

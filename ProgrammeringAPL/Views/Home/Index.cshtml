@@ -1,4 +1,54 @@
-﻿@{
+﻿@model ProgrammeringAPL.Models.ViewModels.HomeViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<head>
+    <link rel="stylesheet" href="~/css/carousel-style.css">
+</head>
+<div class="carousel-container">
+    <div class="carousel">
+        @foreach (var project in Model.Projects)
+        {
+            
+            var firstImage = project.Gallery.FirstOrDefault();
+            if (firstImage != null)
+            {
+                <div class="carousel-item">
+                    
+                    <img src="@firstImage.ImagePath" alt="@project.Title" tabindex="0">
+                    
+                    <div class="carousel-caption">
+                        <a href="/Projects/Details/@project.Id">
+                            <h3>@project.Title</h3>
+                        </a>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+<section id="projekt">
+    <h2>Mina projekt</h2>
+    <ul>
+        @foreach (var project in Model.Projects)
+        {
+            <li>
+                <strong>@project.Title</strong>: @project.Description
+                <br />
+                <a href="/Projects/Details/@project.Id" target="_blank">Projektlänk</a> |
+                <a href="@project.RepositoryUrl" target="_blank">Repository</a>
+            </li>
+        }
+    </ul>
+</section>
+
+<script src="~/js/script.js"></script>
+
+
+
+@*  @{
     ViewData["Title"] = "Home Page";
 }
 <head>
@@ -27,4 +77,4 @@
     </ul>
 </section>
 
-<script src="~/js/script.js"></script>
+<script src="~/js/script.js"></script>  *@

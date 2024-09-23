@@ -7,6 +7,7 @@
     overflow: hidden;
     background-color: #000000;
     border-radius: 10px;
+    margin-top: 5%;
 }
 
 .carousel {
@@ -14,62 +15,65 @@
     margin: 0 auto;
     width: 100%;
     max-width: 750px;
-    height: 200px; 
+    height: 400px; 
 }
 
 .carousel-item {
     position: absolute;
     top: 0;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.7s ease-in-out;
     opacity: 0;
 }
 
-    .carousel-item img {
-        width: 200px;
-        height: auto;
-        border-radius: 8px;
-        cursor: pointer;
-        display: block;
-        margin: auto;
-        transition: transform 0.3s;
-    }
+.carousel-item img {
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    transition: transform 0.3s;
+}
 
-    .carousel-item.left {
-        left: 0%;
-        transform: translateX(0%);
-        opacity: 0.6;
-    }
+.carousel-item.left {
+    left: 0%;
+    transform: translateX(0%);
+    opacity: 0.6;
+}
 
-    .carousel-item.middle {
-        left: 50%;
-        transform: translateX(-50%) scale(1.2);
-        opacity: 1;
-        z-index: 2;
-    }
+.carousel-item.middle {
+    left: 50%;
+    transform: translateX(-50%) scale(1.2);
+    opacity: 1;
+    z-index: 2;
+}
 
-    .carousel-item.right {
-        left: 100%;
-        transform: translateX(-100%);
-        opacity: 0.6;
-    }
+.carousel-item.right {
+    left: 100%;
+    transform: translateX(-100%);
+    opacity: 0.6;
+}
 
-    .carousel-item.hidden {
-        opacity: 0;
-    }
+.carousel-item.hidden {
+    opacity: 0;
+}
 
-    .carousel-item.focused img {
-        transform: scale(1.2);
-    }
+.carousel-item.focused img {
+    transform: scale(1.2);
+}
 
-    .carousel-item.middle {
-        z-index: 2;
-    }
+.carousel-item.middle {
+    z-index: 2;
+}
 
-    .carousel-item.left,
-    .carousel-item.right {
-        z-index: 1;
-    }
+.carousel-item.left,
+.carousel-item.right {
+    z-index: 1;
+}
 
+.carousel-caption-primary > .carousel-caption {
+    margin-top: 15%;
+}
 
 .container {
     background-color: #000000;

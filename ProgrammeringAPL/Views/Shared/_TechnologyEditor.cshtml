@@ -1,0 +1,7 @@
+﻿@model ProgrammeringAPL.Models.ViewModels.TechnologyViewModel
+
+<div class="technology-item">
+    <input asp-for="Name" class="form-control" placeholder="Technology Name" />
+    <span asp-validation-for="Name" class="text-danger"></span>
+    <button type="button" class="btn btn-danger remove-technology">Remove</button>
+</div>

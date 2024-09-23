@@ -1,22 +1,74 @@
-/* html {
-  font-size: 14px;
+.card:hover {
+    transform: translateY(-5px);
+    transition: transform 0.2s;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+label {
+    display: block;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+.card-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+.card-img-top {
+    height: 350px;
+    object-fit: cover;
 }
 
-body {
-  margin-bottom: 60px;
-}*/
+div.card {
+    background-color: #1F1F1F !important;
+    color: #E0E0E0 !important;
+    border: 1px solid #333333;
+}
+
+
+.card-title {
+    color: #FFFFFF;
+}
+
+.card-text {
+    color: #E0E0E0;
+}
+
+
+.card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+
+.btn-outline-secondary {
+    color: #BB86FC;
+    border-color: #BB86FC;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #BB86FC;
+    color: #1F1F1F;
+    border-color: #BB86FC;
+}
+
+.btn-outline-danger {
+    color: #CF6679;
+    border-color: #CF6679;
+}
+
+.btn-outline-danger:hover {
+    background-color: #CF6679;
+    color: #1F1F1F;
+    border-color: #CF6679;
+}
+
+.btn-primary {
+    background-color: #BB86FC;
+    border-color: #BB86FC;
+}
+
+.btn-primary:hover {
+    background-color: #9C4CCC;
+    border-color: #9C4CCC;
+}
