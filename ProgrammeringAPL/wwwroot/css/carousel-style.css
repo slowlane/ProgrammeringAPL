@@ -27,7 +27,7 @@
 
 .carousel-item img {
     width: 200px;
-    height: auto;
+    height: 200px;
     border-radius: 8px;
     cursor: pointer;
     display: block;
