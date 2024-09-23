@@ -172,6 +172,7 @@ namespace ProgrammeringAPL.Controllers
         }
 
         // GET: Projects/Edit/5
+
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -184,17 +185,32 @@ namespace ProgrammeringAPL.Controllers
             {
                 return NotFound();
             }
-            return View(project);
+
+            var viewModel = new ProjectEditViewModel
+            {
+                Id = project.Id,
+                Title = project.Title,
+                Description = project.Description,
+                ProjectUrl = project.ProjectUrl,
+                RepositoryUrl = project.RepositoryUrl,
+                DemoUrl = project.DemoUrl,
+                CreatedDate = project.CreatedDate,
+                LastUpdated = project.LastUpdated
+                // Mappa andra fält eventuellt
+            };
+
+            return View(viewModel);
         }
+
 
         // POST: Projects/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,ImageUrl,ProjectUrl,RepositoryUrl,DemoUrl,CreatedDate,LastUpdated,Category,Status,Client")] Project project)
+        public async Task<IActionResult> Edit(int id, ProjectEditViewModel viewModel)
         {
-            if (id != project.Id)
+            if (id != viewModel.Id)
             {
                 return NotFound();
             }
@@ -203,12 +219,26 @@ namespace ProgrammeringAPL.Controllers
             {
                 try
                 {
+                    var project = await _context.Projects.FindAsync(id);
+                    if (project == null)
+                    {
+                        return NotFound();
+                    }
+
+                    // Uppdatera fälten
+                    project.Title = viewModel.Title;
+                    project.Description = viewModel.Description;
+                    project.ProjectUrl = viewModel.ProjectUrl;
+                    project.RepositoryUrl = viewModel.RepositoryUrl;
+                    project.DemoUrl = viewModel.DemoUrl;
+                    project.LastUpdated = DateTime.Now; // Uppdatera till nuvarande tid automatiskt
+
                     _context.Update(project);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProjectExists(project.Id))
+                    if (!ProjectExists(viewModel.Id))
                     {
                         return NotFound();
                     }
@@ -219,10 +249,10 @@ namespace ProgrammeringAPL.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(project);
+
+            return View(viewModel);
         }
 
-        // GET: Projects/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
