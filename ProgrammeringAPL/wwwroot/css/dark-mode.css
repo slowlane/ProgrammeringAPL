@@ -52,14 +52,7 @@ nav {
     color: #FFFFFF;
 }
 
-a {
-    color: #BB86FC;
-    text-decoration: none;
-}
 
-a:hover {
-    text-decoration: underline;
-}
 
 button {
     padding: 12px 25px;
@@ -88,6 +81,32 @@ button {
     font-size: 1.2em;
     width: 150px;
 
+}
+
+a {
+    color: #BB86FC;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    color: white;
+    font-weight: 700;
+    background-color: #BB86FC;
+    text-align: center;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: 50px;
+}
+
+a.button:hover {
+    background-color: #9A67EA;
 }
 
 footer {

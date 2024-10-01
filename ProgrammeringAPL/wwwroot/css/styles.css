@@ -1,8 +1,12 @@
-﻿/* style.css */
+﻿
 * {
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+div {
+    margin: 30px auto;
 }
 
 body {
@@ -32,13 +36,13 @@ section {
     box-shadow: 0 0 15px #000;
 }
 
-    section h2 {
-        color: #FFFFFF;
-        font-size: 2em;
-        margin-bottom: 20px;
-        border-bottom: 2px solid #BB86FC;
-        padding-bottom: 10px;
-    }
+section h2 {
+    color: #FFFFFF;
+    font-size: 2em;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #BB86FC;
+    padding-bottom: 10px;
+}
 
 button {
     margin: 10px 0;
@@ -48,7 +52,7 @@ h1, h2 {
     color: #FFFFFF;
     font-size: 2em;
     margin-bottom: 20px;
-    border-bottom: 2px solid #BB86FC;
+    /*border-bottom: 2px solid #BB86FC;*/
     padding-bottom: 10px;
 }
 

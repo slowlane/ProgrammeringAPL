@@ -10,7 +10,6 @@
 <body>
 
     <div id="kontakt">
-        <h2>Kontakt</h2>
         <form asp-action="Submit" method="post" id="contactForm" onsubmit="return validateForm()">
             <label for="name">Namn:</label>
             <input type="text" id="name" name="name" value="@Model.Name" required>

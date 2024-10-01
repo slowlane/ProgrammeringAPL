@@ -4,7 +4,7 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+
 
 
 @if (Model.Gallery != null && Model.Gallery.Any())
@@ -17,7 +17,7 @@ else
 }
 
 <div>
-    <h4>Project</h4>
+
     <hr />
     <dl class="row">
         @if (!string.IsNullOrWhiteSpace(Model.Title))
@@ -122,5 +122,5 @@ else
 
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a  asp-action="Index">Back to List</a>
 </div>
