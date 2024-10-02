@@ -10,18 +10,17 @@ form label {
     margin-bottom: 5px;
     font-size: 1.2em;
     font-weight: bold;
-    color: #BB86FC;
+    color: #007bff;
     display: block;
 }
 
 form input,
-form textarea
-{
+form textarea {
     padding: 12px;
     margin-bottom: 20px;
     border: 1px solid #333333;
     border-radius: 5px;
-    background-color: #2C2C2C;
+    background-color: #ffffff;
     color: #E0E0E0;
     min-width: 200px;
 }
@@ -38,7 +37,7 @@ form input[type="submit"] {
     max-width: 20%;
     border: none;
     border-radius: 5px;
-    background-color: #BB86FC;
+    background-color: #007bff;
     color: #FFFFFF;
     cursor: pointer;
     font-size: 1.1em;
