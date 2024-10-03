@@ -81,6 +81,10 @@ div.form-group {
     border-radius: 4px;
 }
 
+.custom-file-upload {
+    color: white !important;
+}
+
 .file-input {
     display: none;
 }

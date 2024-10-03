@@ -4,22 +4,21 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="button" asp-action="Create">Lägg till bok</a>
 </p>
-<table class="table">
+<table class="table db-item">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Title)
+                Titel
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Author)
+                Författare
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.YearPublished)
+                Publicerad
             </th>
             <th></th>
         </tr>
