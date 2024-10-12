@@ -12,10 +12,11 @@ using ProgrammeringAPL.Models.ViewModels;
 
 namespace ProgrammeringAPL.Controllers
 {
+    // Konstruktor för att initiera databaskontexten och miljön för webbhosting
     public class ProjectsController : Controller
     {
-        private readonly ApplicationDbContext _context;
-        private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly ApplicationDbContext _context; // Används för att hantera databasoperationer
+        private readonly IWebHostEnvironment _webHostEnvironment; // Används för att hantera filer i webbmappen (wwwroot), t.ex. uppladdningar
 
         public ProjectsController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
         {
@@ -23,31 +24,32 @@ namespace ProgrammeringAPL.Controllers
             _webHostEnvironment = webHostEnvironment;
         }
 
-        // GET: Projects
+        // GET: Projects Hämtar alla projekt från databasen och inkluderar galleriobjekten som är relaterade till varje projekt.
         public async Task<IActionResult> Index()
         {
             var projects = await _context.Projects
-                .Include(p => p.Gallery)
+                .Include(p => p.Gallery) // Inkluderar galleribilder relaterade till projektet, detta är för Index-sidan
                 .ToListAsync();
 
             return View(projects);
-            //return View(await _context.Projects.ToListAsync());
+
         }
 
-        // GET: Projects/Details/5
+        // GET: Projects/Details/5 Denna metod tar emot ett projekt-ID och hämtar det projektet från databasen, inklusive galleriobjekten.
         public async Task<IActionResult> Details(int? id)
         {
+            // Kontrollerar att ett ID skickas med
             if (id == null)
             {
                 return NotFound();
             }
 
             var project = await _context.Projects
-                .Include(p => p.Gallery)
+                .Include(p => p.Gallery) // Inkluderar galleri för att visa bilder
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (project == null)
             {
-                return NotFound();
+                return NotFound(); // Kontrollerar om projektet existerar
             }
 
             return View(project);
@@ -58,12 +60,12 @@ namespace ProgrammeringAPL.Controllers
         {
 
             var viewModel = new ProjectViewModel();
+            // Initierar tomma listor för teknologier, taggar och galleri så användaren kan fylla i dessa
 
             viewModel.Technologies.Add(new TechnologyViewModel());
             viewModel.Tags.Add(new TagViewModel());
             viewModel.Gallery.Add(new GalleryImageViewModel());
             return View(viewModel);
-            //return View();
         }
 
         // POST: Projects/Create
@@ -71,9 +73,9 @@ namespace ProgrammeringAPL.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(ProjectViewModel viewModel)  //Project project [Bind("Id,Title,Description,ImageUrl,ProjectUrl,RepositoryUrl,DemoUrl,CreatedDate,LastUpdated,Category,Status,Client")] 
+        public async Task<IActionResult> Create(ProjectViewModel viewModel) 
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) // Kontrollerar att alla inmatningar är giltiga
             {
 
                 var project = new Project
@@ -88,35 +90,32 @@ namespace ProgrammeringAPL.Controllers
                     Technologies = viewModel.Technologies
                         .Where(t => !string.IsNullOrWhiteSpace(t.Name))
                         .Select(t => new Technology { Name = t.Name })
-                        .ToList(),
+                        .ToList(), // Skapar lista av teknologier från ViewModel
                     Tags = viewModel.Tags
                         .Where(t => !string.IsNullOrWhiteSpace(t.Name))
                         .Select(t => new Tag { Name = t.Name })
                         .ToList(),
                     Gallery = new List<GalleryImage>()
-                    //Gallery = viewModel.Gallery
-                    //  .Where(g => !string.IsNullOrWhiteSpace(g.ImageUrl))
-                    //.Select(g => new GalleryImage { ImageUrl = g.ImageUrl, Caption = g.Caption })
-                    //.ToList()
                 };
 
+                // Hanterar bilduppladdning om det finns några bilder
                 if (viewModel.Gallery != null && viewModel.Gallery.Count > 0)
                 {
 
                     foreach (var galleryVM in viewModel.Gallery)
                     {
-                        if (!IsValidImage(galleryVM.ImageFile))
+                        if (!IsValidImage(galleryVM.ImageFile)) // Validerar att det är en tillåten filtyp
                         {
                             ModelState.AddModelError("Gallery", "Invalid image file.");
                             return View(viewModel);
                         }
-                        if (galleryVM.ImageFile.Length > 2 * 1024 * 1024) // 2 MB
+                        if (galleryVM.ImageFile.Length > 2 * 1024 * 1024) // Max filstorlek 2 MB
                         {
                             ModelState.AddModelError("Gallery", "File size should be less than 2 MB.");
                             return View(viewModel);
                         }
 
-                        var imagePath = await SaveImageAsync(galleryVM.ImageFile);
+                        var imagePath = await SaveImageAsync(galleryVM.ImageFile); // Sparar bilden
 
                         var galleryImage = new GalleryImage
                         {
@@ -124,7 +123,7 @@ namespace ProgrammeringAPL.Controllers
                             Caption = galleryVM.Caption
                         };
 
-                        project.Gallery.Add(galleryImage);
+                        project.Gallery.Add(galleryImage); // Lägger till sparade bilden i projektets galleri
                     }
                 }
 
@@ -132,38 +131,34 @@ namespace ProgrammeringAPL.Controllers
                 _context.Add(project);
                 await _context.SaveChangesAsync();
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index)); // Redirectar till Index-sidan efter skapande
             }
 
 
             return View(viewModel);
 
-
-            //if (ModelState.IsValid)
-            //{
-            //_context.Add(project);
-            //await _context.SaveChangesAsync();
-            //return RedirectToAction(nameof(Index));
-            //}
-            // return View(project);
         }
 
-
+        //Sparar en bild till serverns uppladdningsmapp.
         private async Task<string> SaveImageAsync(IFormFile imageFile)
         {
+            // Skapa sökvägen till uppladdningsmappen
             string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
-            Directory.CreateDirectory(uploadsFolder); // Ensure the folder exists
+            Directory.CreateDirectory(uploadsFolder); // Säkerställ att mappen finns, skapa den annars
+            // Skapa ett unikt filnamn för att undvika namnkonflikter
             string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(imageFile.FileName);
             string filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
+            // Spara bilden i mappen
             using (var fileStream = new FileStream(filePath, FileMode.Create))
             {
-                await imageFile.CopyToAsync(fileStream);
+                await imageFile.CopyToAsync(fileStream); // Kopiera filens innehåll till den nya platsen på servern
             }
 
+            // Returnera sökvägen som behövs för att visa bilden
             return "/uploads/" + uniqueFileName;
         }
-
+        //Validerar om en fil är av tillåten typ.
         private bool IsValidImage(IFormFile file)
         {
             var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
@@ -185,7 +180,7 @@ namespace ProgrammeringAPL.Controllers
             {
                 return NotFound();
             }
-
+            // Mappning av data från databasen till en edit viewmodel
             var viewModel = new ProjectEditViewModel
             {
                 Id = project.Id,
@@ -215,7 +210,7 @@ namespace ProgrammeringAPL.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) // Kontrollerar att alla inmatningar är giltiga
             {
                 try
                 {
@@ -225,7 +220,7 @@ namespace ProgrammeringAPL.Controllers
                         return NotFound();
                     }
 
-                    // Uppdatera fälten
+                    // Uppdatera projektets egenskaper med de ifyllda fälten
                     project.Title = viewModel.Title;
                     project.Description = viewModel.Description;
                     project.ProjectUrl = viewModel.ProjectUrl;
@@ -236,6 +231,8 @@ namespace ProgrammeringAPL.Controllers
                     _context.Update(project);
                     await _context.SaveChangesAsync();
                 }
+
+                //Hanterar potentiella fel med databaskonflikter.
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!ProjectExists(viewModel.Id))
@@ -247,9 +244,8 @@ namespace ProgrammeringAPL.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index)); // Tillbaka till index automatiskt
             }
-
             return View(viewModel);
         }
 
@@ -259,9 +255,10 @@ namespace ProgrammeringAPL.Controllers
             {
                 return NotFound();
             }
-
-            var project = await _context.Projects
-                .FirstOrDefaultAsync(m => m.Id == id);
+            // kontrollerar om projektet finns, om det finns returnera vyn
+            //var project = await _context.Projects
+            //    .FirstOrDefaultAsync(m => m.Id == id);
+            var project = await _context.Projects.FindAsync(id);
             if (project == null)
             {
                 return NotFound();
@@ -277,10 +274,11 @@ namespace ProgrammeringAPL.Controllers
         {
             var project = await _context.Projects.FindAsync(id);
             if (project != null)
-            {
-                _context.Projects.Remove(project);
+            { 
+                _context.Projects.Remove(project);// Tar bort projektet från databasen
             }
 
+            //Spara ändringen i databasen och återgå till index
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

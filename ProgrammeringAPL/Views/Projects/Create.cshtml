@@ -1,23 +1,26 @@
 ﻿
 @model ProgrammeringAPL.Models.ViewModels.ProjectViewModel
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create"; // Sätter sidans titel
 }
 
-<head>
-    <link rel="stylesheet" href="~/css/forms.css?v=1.0">
-    
-</head>
+
 
 
 <hr />
 <form asp-action="Create" method="post" enctype="multipart/form-data" id="project-create-form">
-    <div asp-validation-summary="All" class="text-danger"></div>
+    
+    <div asp-validation-summary="All" class="text-danger"></div><!-- Visar valideringsfel som uppstår i formuläret -->
+    
+    <!-- Titel på projektet -->
     <div class="form-group">
         <label asp-for="Title"></label>
         <input asp-for="Title" class="form-control" />
-        <span asp-validation-for="Title" class="text-danger"></span>
+        <span asp-validation-for="Title" class="text-danger"></span> <!-- Visar eventuella valideringsfel för titel -->
     </div>
+    
+    
+    <!-- Beskrivning av projektet -->
     <div class="form-group">
         <label asp-for="Description"></label>
         <textarea asp-for="Description" class="form-control"></textarea>
@@ -27,19 +30,19 @@
 
 
 
-   
+    <!-- Teknologier relaterade till projektet -->
     <div id="technologies" class="form-group">
         <div id="technologies" >
             <label asp-for="Technologies"></label>
             @for (int i = 0; i < Model.Technologies.Count; i++)
             {
-                @Html.Partial("_TechnologyEditor", Model.Technologies[i])
+                @Html.Partial("_TechnologyEditor", Model.Technologies[i]) <!-- Delvy för att redigera varje teknologi -->
             }
         </div>
         <button type="button" class="btn btn-primary" id="add-technology">Add Tech</button>
     </div>
 
-
+    <!-- Taggar för projektet -->
     <div id="tags" class="form-group">
         @for (int i = 0; i < Model.Tags.Count; i++)
         {
@@ -54,7 +57,7 @@
     </div>
 
 
-
+    <!-- Bildgalleri för projektet -->
     <div id="gallery" class="form-group">
         @for (int i = 0; i < Model.Gallery.Count; i++)
         {
@@ -75,7 +78,7 @@
         }
         <button type="button" class="btn btn-primary" id="add-gallery">Add Image</button>
     </div>
-
+    <!-- Formulärknapp för att skicka in projektet -->
     <div class="form-group">
         <button type="submit" class="btn btn-success">Create</button>
     </div>
@@ -87,12 +90,15 @@
 
 @section Scripts {
     @{
+        <!-- Lägg till valideringsskript -->
+
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        
     }
     <script>
         
         $(document).ready(function () {
-          
+            // Lägg till ett nytt teknologiavsnitt dynamiskt när "Add Tech" knappen klickas
             $('#add-technology').click(function () {
                 var index = $('#technologies .technology-item').length;
                 var template = `
@@ -103,13 +109,13 @@
                             </div>`;
                 $('#technologies').append(template);
             });
-
+            // Tar bort en specifik teknologi när "Remove" knappen klickas
             $(document).on('click', '.remove-technology', function () {
                 $(this).parent().remove();
              
             });
 
-         
+            // Lägg till en ny tag-avsnitt dynamiskt när "Add Tag" knappen klickas
             $('#add-tag').click(function () {
                 var index = $('#tags .tag-item').length;
                 var template = `
@@ -120,12 +126,12 @@
                             </div>`;
                 $('#tags').append(template);
             });
-
+            // Tar bort en specifik tag när "Remove" knappen klickas
             $(document).on('click', '.remove-tag', function () {
                 $(this).parent().remove();
             });
 
-      
+            // Lägg till ett nytt galleriavsnitt dynamiskt när "Add Image" knappen klickas, med en knapp för att ta bort avsnittet
             $('#add-gallery').click(function () {
                 var index = $('#gallery .gallery-item').length;
                 var template = `
@@ -140,6 +146,11 @@
                     <button type="button" class="btn btn-danger remove-gallery">Remove</button>
                 </div>`;
                 $('#gallery').append(template);
+                // Tar bort en specifik bild när "Remove" knappen klickas
+                $(document).on('click', '.remove-gallery', function () {
+                    $(this).parent().remove();
+
+                });
             });
         });
     </script>

@@ -43,12 +43,12 @@ namespace ProgrammeringAPL.Models.ViewModels
 
 
 
-        // Related Entities
+   
         public List<TechnologyViewModel> Technologies { get; set; } = new List<TechnologyViewModel>();
         public List<TagViewModel> Tags { get; set; } = new List<TagViewModel>();
         public List<GalleryImageViewModel> Gallery { get; set; } = new List<GalleryImageViewModel>();
 
-        // Optional: For file uploads in Gallery Images
+   
         // public List<IFormFile> GalleryImages { get; set; } = new List<IFormFile>();
     }
 

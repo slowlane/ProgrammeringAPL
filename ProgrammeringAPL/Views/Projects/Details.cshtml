@@ -9,17 +9,21 @@
 
 @if (Model.Gallery != null && Model.Gallery.Any())
 {
+    <!-- Visar första bilden från galleriet om det finns någon -->
     <img src="@Model.Gallery.First().ImagePath" class="card-img-top" alt="@Model.Title">
 }
 else
 {
+    <!-- Visar en platshållarbild om inget galleri finns, men alla projekt måste ha en bild vid skapande -->
+
     <img src="~/images/default-image.jpg" class="card-img-top" alt="Default Image">
 }
 
+<!-- Visar projektinformationen, hämtar information från aktuellt projekt i databasen -->
 <div>
-
     <hr />
     <dl class="row">
+        @* Kontrollerar så att fältet faktiskt finns/är ifyllt innan det inkluderas på sidan *@
         @if (!string.IsNullOrWhiteSpace(Model.Title))
         {
             <dt class="col-sm-2">
@@ -99,6 +103,8 @@ else
     </dl>
 </div>
 
+@* För att visa flera bilder, kan återimplementeras i framtiden *@
+
 @* @if (Model.Gallery != null && Model.Gallery.Count() > 1)
 {
     <div class="gallery">
@@ -120,6 +126,7 @@ else
     </div>
 } *@
 
+@* Länkar för att återgå till andra sidor *@
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a  asp-action="Index">Back to List</a>

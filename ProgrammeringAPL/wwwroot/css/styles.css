@@ -1,12 +1,14 @@
-﻿@import url('todo.css');
+﻿@import url('db-item.css');
 @import url('carousel-style.css');
 @import url('forms.css');
-
+/*ALL*/
 * {
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~GENERIC~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 div {
     margin: 30px auto;
@@ -25,9 +27,9 @@ body {
 
 header {
     color: white;
-    padding: 10px 0; 
+    padding: 10px 0;
     text-align: left;
-    
+    border-bottom: 1px solid #333 !important;
 }
 
 header h1 {
@@ -43,6 +45,15 @@ h1, h2 {
     font-size: 2em;
     margin-bottom: 20px;
     padding-bottom: 10px;
+}
+
+label {
+    display: block;
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~NAV~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+nav {
+    border-bottom: 1px solid #333 !important;
 }
 
 .navbara {
@@ -65,6 +76,18 @@ h1, h2 {
     transition: background-color 0.3s, color 0.3s;
     color: #333; 
 }
+
+#login-register-nav {
+    display: flex;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 0;
+    margin-right: 20px;
+    align-items: center;
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TABLE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 table {
     color:white;
@@ -89,7 +112,7 @@ tbody tr:last-of-type {
     }
 
 
-
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~LIGHT DARK MODE TOGGLE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 .toggle-container {
     display: flex;
@@ -121,15 +144,16 @@ tbody tr:last-of-type {
     color: #ccc;
 }
 
-#login-register-nav {
-    display: flex;
-    position: absolute;
-    right: 0;
-    top: 0;
-    margin: 0;
-    margin-right: 20px;
-    align-items: center;
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~GENERIC CONTENT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+
+main {
+    margin: 0 auto;
+    width: 100%;
+    min-width: 400px;
 }
+
+
 
 section {
     padding: 40px 20px;
@@ -148,7 +172,19 @@ section h2 {
     padding-bottom: 10px;
 }
 
+.container {
+    text-align: center;
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+}
 
+.container input[type="submit"] {
+    min-width: 150px;
+}
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~LINKS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 a {
     color: #007bff; 
@@ -175,6 +211,8 @@ a.button {
 a.button:hover {
     background-color: #0056b3;
 }
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~BUTTONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 button {
     margin: 10px 0;
@@ -238,6 +276,8 @@ button {
     border-color: #0056b3;
 }
 
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~FOOTER~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
 footer {
     background-color: #f0f0f0; 
     color: #333;
@@ -250,6 +290,8 @@ footer p {
     margin: 0;
     font-size: 0.9em;
 }
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~LISTS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 dl {
     margin: 20px auto;
@@ -267,32 +309,19 @@ ul {
     list-style-type: none;
 }
 
-.container {
-    text-align: center;
-    margin: 0 auto;
-    height: 100%;
-    width: 100%;
-}
 
-.container input[type="submit"] {
-    min-width: 150px;
-}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PROJECT CARDS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-main {
-    margin: 0 auto;
-    width: 100%;
-    min-width: 400px;
+.card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    background-color: #ffffff;
+    color: #333;
+    border: 1px solid #ccc;
 }
-
 
 .card:hover {
     transform: translateY(-5px);
     transition: transform 0.2s;
-}
-
-
-label {
-    display: block;
 }
 
 
@@ -312,14 +341,6 @@ label {
 }
 
 
-.card {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-    background-color: #ffffff; 
-    color: #333; 
-    border: 1px solid #ccc; 
-}
-
-
 .card-title {
     color: #333; 
 }
@@ -328,6 +349,8 @@ label {
     text-align: center;
 }
 
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~SCROLLBAR~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -335,6 +358,8 @@ label {
 ::-webkit-scrollbar:hover {
     width: 15px;
 }
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MEDIA QUERIES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 @media (max-width: 600px) {
     header {

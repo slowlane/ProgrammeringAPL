@@ -3,24 +3,24 @@
 @{
     ViewData["Title"] = "Edit";
 }
-<head>
-    <link rel="stylesheet" href="~/css/forms.css?v=1.0">
 
-</head>
-<h1>Edit</h1>
 
-<h4>Project</h4>
+
+
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div> <!-- Visar valideringsfel som uppstår i formuläret -->
+            <input type="hidden" asp-for="Id" /><!-- Dolt fält för att skicka projektets ID så att servern kan identifiera vilket projekt som ska uppdateras -->
 
+
+
+            @* Radar upp information om projektet med input för att ändra fältet  *@
             <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
+                <label asp-for="Title" class="control-label"></label><!-- Label för titel fältet -->
+                <input asp-for="Title" class="form-control" /> <!-- Inmatningsfält för projektets titel -->
+                <span asp-validation-for="Title" class="text-danger"></span> <!-- Visar eventuella valideringsfel för fältet -->
             </div>
 
             <div class="form-group">
@@ -59,6 +59,7 @@
                 <span asp-validation-for="LastUpdated" class="text-danger"></span>
             </div>
 
+            <!-- Formulärknapp för att spara ändringarna -->
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
@@ -66,6 +67,7 @@
     </div>
 </div>
 
+@* Länkar för att återgå till andra sidor *@
 <div>
     <a class="button"  asp-action="Index">Back to List</a>
 </div>
