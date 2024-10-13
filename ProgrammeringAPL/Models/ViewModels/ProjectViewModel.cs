@@ -1,9 +1,9 @@
 ﻿
-// File: ViewModels/ProjectViewModel.cs
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Http; // If handling file uploads
+using Microsoft.AspNetCore.Http;
 
 namespace ProgrammeringAPL.Models.ViewModels
 {
@@ -81,7 +81,7 @@ namespace ProgrammeringAPL.Models.ViewModels
         [StringLength(200)]
         public string Caption { get; set; }
         
-        [Required(ErrorMessage = "Please upload an image.")]
+        [Required(ErrorMessage = "Var god och ladda upp en bild.")]
         [DataType(DataType.Upload)]
         public IFormFile ImageFile { get; set; }
     }

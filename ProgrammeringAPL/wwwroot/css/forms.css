@@ -77,19 +77,17 @@ div.form-group {
     padding: 8px 20px;
     cursor: pointer;
     background-color: #3994eb;
-    color: white;
+    color: white !important;
     border-radius: 4px;
+    margin-bottom: 30px;
 }
 
-.custom-file-upload {
-    color: white !important;
-}
+    .custom-file-upload:hover {
+        background-color: #a260d4;
+    }
 
 .file-input {
     display: none;
 }
 
 
-.custom-file-upload:hover {
-    background-color: #a260d4;
-}

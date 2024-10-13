@@ -164,14 +164,6 @@ form input[type="submit"]:hover {
 
 
 
-
-.custom-file-upload {
-    background-color: #3994eb !important;
-    color: white;
-}
-
-
-
 .custom-file-upload:hover {
     background-color: #a260d4;
 }

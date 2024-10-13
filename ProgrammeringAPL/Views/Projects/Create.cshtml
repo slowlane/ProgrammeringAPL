@@ -10,7 +10,7 @@
 <hr />
 <form asp-action="Create" method="post" enctype="multipart/form-data" id="project-create-form">
     
-    <div asp-validation-summary="All" class="text-danger"></div><!-- Visar valideringsfel som uppstår i formuläret -->
+    @* <div asp-validation-summary="All" class="text-danger"></div><!-- Visar valideringsfel som uppstår i formuläret --> *@
     
     <!-- Titel på projektet -->
     <div class="form-group">
@@ -31,29 +31,31 @@
 
 
     <!-- Teknologier relaterade till projektet -->
-    <div id="technologies" class="form-group">
-        <div id="technologies" >
+    @* <div @* id="technologies"  class="form-group"> *@
+        <div class="form-group">
             <label asp-for="Technologies"></label>
             @for (int i = 0; i < Model.Technologies.Count; i++)
             {
                 @Html.Partial("_TechnologyEditor", Model.Technologies[i]) <!-- Delvy för att redigera varje teknologi -->
             }
-        </div>
         <button type="button" class="btn btn-primary" id="add-technology">Add Tech</button>
-    </div>
+        </div>
+        
+
 
     <!-- Taggar för projektet -->
-    <div id="tags" class="form-group">
+    <div class="form-group">
         @for (int i = 0; i < Model.Tags.Count; i++)
         {
-            <label asp-for="Tags"></label>
-            <div class="tag-item">
+            <div class="form-group">
+                <label asp-for="Tags"></label>
                 <input asp-for="Tags[@i].Name" class="form-control" placeholder="Tag Name" />
                 <span asp-validation-for="Tags[@i].Name" class="text-danger"></span>
-                <button type="button" class="btn btn-danger remove-tag">Remove</button>
+                @* <button type="button" class="btn btn-danger remove-tag">Remove</button> *@
+                <button type="button" class="btn btn-primary" id="add-tag">Add Tag</button>
             </div>
         }
-        <button type="button" class="btn btn-primary" id="add-tag">Add Tag</button>
+        
     </div>
 
 
@@ -73,10 +75,11 @@
                 <label>Caption</label>
                 <input asp-for="Gallery[@i].Caption" class="form-control" />
 
-                <button type="button" class="btn btn-danger remove-gallery">Remove</button>
+                @* <button type="button" class="btn btn-danger remove-gallery">Remove</button> *@
+                <button type="button" class="btn btn-primary" id="add-gallery">Add Image</button>
             </div>
         }
-        <button type="button" class="btn btn-primary" id="add-gallery">Add Image</button>
+        
     </div>
     <!-- Formulärknapp för att skicka in projektet -->
     <div class="form-group">

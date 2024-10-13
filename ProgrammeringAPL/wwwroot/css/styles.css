@@ -49,6 +49,14 @@ h1, h2 {
 
 label {
     display: block;
+    padding: 10px;
+}
+
+span {
+    display: block;
+    color: red;
+    font-size: 5px;
+    margin-top: -12px;
 }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~NAV~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -242,6 +250,10 @@ button {
     font-size: 1.2em;
     width: 150px;
 }
+
+    .btn-success:hover {
+        background-color: #92c9b6;
+    }
 
 .btn-outline-secondary {
     color: #007bff; 
