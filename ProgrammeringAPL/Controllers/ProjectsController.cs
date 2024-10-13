@@ -134,7 +134,26 @@ namespace ProgrammeringAPL.Controllers
                 return RedirectToAction(nameof(Index)); // Redirectar till Index-sidan efter skapande
             }
 
+            if (!ModelState.IsValid) // Om valideringen misslyckas
+            {
+                // Återställ listor med inmatad information om de saknas
+                if (viewModel.Technologies == null || !viewModel.Technologies.Any())
+                {
+                    viewModel.Technologies = new List<TechnologyViewModel> { new TechnologyViewModel() };
+                }
 
+                if (viewModel.Tags == null || !viewModel.Tags.Any())
+                {
+                    viewModel.Tags = new List<TagViewModel> { new TagViewModel() };
+                }
+
+                if (viewModel.Gallery == null || !viewModel.Gallery.Any())
+                {
+                    viewModel.Gallery = new List<GalleryImageViewModel> { new GalleryImageViewModel() };
+                }
+
+                return View(viewModel); // Returnera vyn med återställd data
+            }
             return View(viewModel);
 
         }
