@@ -1,5 +1,6 @@
 ﻿namespace ProgrammeringAPL.Models
 {
+    // Representerar en bok i systemet
     public class Book
     {
         public int Id { get; set; }

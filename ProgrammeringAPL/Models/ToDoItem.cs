@@ -2,6 +2,7 @@
 
 namespace ProgrammeringAPL.Models
 {
+    // Representerar en todo-post
     public class ToDoItem
     {
         [Key]

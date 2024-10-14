@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProgrammeringAPL.Models
 {
+    // Representerar ett projekt i systemet
     public class Project
     {
         [Key]
@@ -21,11 +22,12 @@ namespace ProgrammeringAPL.Models
 
         [Url]
         [Display(Name = "Project URL")]
-        public string? ProjectUrl { get; set; }
+        public string? ProjectUrl { get; set; } // URL till projektets webbsida
 
         [StringLength(500)]
         [Display(Name = "Repository URL")]
-        public string? RepositoryUrl { get; set; }
+        public string? RepositoryUrl { get; set; } // URL till projektets kodlager (repository)
+
 
         [StringLength(500)]
         [Display(Name = "Demo URL")]
@@ -42,13 +44,15 @@ namespace ProgrammeringAPL.Models
         public DateTime LastUpdated { get; set; }
 
 
-        public List<Tag> Tags { get; set; }
+        public List<Tag> Tags { get; set; } // Lista med taggar kopplade till projektet
 
-        public List<Technology> Technologies { get; set; }
+        public List<Technology> Technologies { get; set; } // Lista med teknologier använda i projektet
 
-        public List<GalleryImage> Gallery { get; set; }
+
+        public List<GalleryImage> Gallery { get; set; } // Lista med bilder relaterade till projektet
     }
 
+    // Representerar en teknologi använd i projektet
     public class Technology
     {
         [Key]
@@ -58,11 +62,11 @@ namespace ProgrammeringAPL.Models
         [StringLength(50)]
         public string Name { get; set; }
 
-        // Navigation property
-        public int ProjectId { get; set; }
-        public Project Project { get; set; }
+        public int ProjectId { get; set; } // ID för projektet som teknologin är kopplad till
+        public Project Project { get; set; } // Navigation property för projektet
     }
 
+    // Representerar en tagg kopplad till projektet
     public class Tag
     {
         [Key]
@@ -73,28 +77,30 @@ namespace ProgrammeringAPL.Models
         public string Name { get; set; }
 
         // Navigation property
-        public int ProjectId { get; set; }
-        public Project Project { get; set; }
+        public int ProjectId { get; set; } // ID för projektet som taggen är kopplad till
+        public Project Project { get; set; } // Navigation property för projektet
     }
 
+    // Representerar en bild i projektets galleri
     public class GalleryImage
     {
         [Key]
         public int GalleryImageId { get; set; }
 
         [StringLength(500)]
-        public string ImagePath { get; set; }
+        public string ImagePath { get; set; } // Sökvägen till bilden
 
         [NotMapped]
         [Required(ErrorMessage = "Please upload an image.")]
-        public IFormFile ImageFile { get; set; }
+        public IFormFile ImageFile { get; set; } // Själva filen för bilden som laddas upp
+
 
 
         [StringLength(200)]
-        public string Caption { get; set; }
+        public string Caption { get; set; } // Bildtext för bilden
 
         // Navigation property
-        public int ProjectId { get; set; }
-        public Project Project { get; set; }
+        public int ProjectId { get; set; } // ID för projektet som bilden är kopplad till
+        public Project Project { get; set; } // Navigation property för projektet
     }
 }

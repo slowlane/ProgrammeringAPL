@@ -2,7 +2,8 @@
 
 namespace ProgrammeringAPL.Models
 {
-    
+
+    // Representerar ett kontaktformulär som användaren kan fylla i
     public class ContactFormModel
     {
         [Required(ErrorMessage = "Namn krävs.")]

@@ -2,6 +2,7 @@
 
 namespace ProgrammeringAPL.Models.ViewModels
 {
+    // ViewModel för att redigera ett projekt
     public class ProjectEditViewModel
     {
         public int Id { get; set; }

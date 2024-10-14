@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace ProgrammeringAPL.Models.ViewModels
 {
+    // ViewModel för att skapa eller visa detaljer om ett projekt
     public class ProjectViewModel
     {
         public int Id { get; set; }
@@ -44,14 +45,17 @@ namespace ProgrammeringAPL.Models.ViewModels
 
 
    
-        public List<TechnologyViewModel> Technologies { get; set; } = new List<TechnologyViewModel>();
-        public List<TagViewModel> Tags { get; set; } = new List<TagViewModel>();
-        public List<GalleryImageViewModel> Gallery { get; set; } = new List<GalleryImageViewModel>();
+        public List<TechnologyViewModel> Technologies { get; set; } = new List<TechnologyViewModel>(); // Lista med teknologier kopplade till projektet
+        public List<TagViewModel> Tags { get; set; } = new List<TagViewModel>(); // Lista med taggar kopplade till projektet
+        public List<GalleryImageViewModel> Gallery { get; set; } = new List<GalleryImageViewModel>(); // Lista med bilder relaterade till projektet
 
-   
+
         // public List<IFormFile> GalleryImages { get; set; } = new List<IFormFile>();
     }
 
+   
+    
+    // ViewModel för att representera en teknologi som är kopplad till ett projekt
     public class TechnologyViewModel
     {
         public int TechnologyId { get; set; }
@@ -61,6 +65,10 @@ namespace ProgrammeringAPL.Models.ViewModels
         public string Name { get; set; }
     }
 
+   
+    
+    
+    // ViewModel för att representera en tagg som är kopplad till ett projekt
     public class TagViewModel
     {
         public int TagId { get; set; }
@@ -70,6 +78,9 @@ namespace ProgrammeringAPL.Models.ViewModels
         public string Name { get; set; }
     }
 
+
+
+    // ViewModel för att representera en bild i projektets galleri
     public class GalleryImageViewModel
     {
         public int GalleryImageId { get; set; }
@@ -83,7 +94,7 @@ namespace ProgrammeringAPL.Models.ViewModels
         
         [Required(ErrorMessage = "Var god och ladda upp en bild.")]
         [DataType(DataType.Upload)]
-        public IFormFile ImageFile { get; set; }
+        public IFormFile ImageFile { get; set; } // Filen som laddas upp som bild
     }
 }
 
