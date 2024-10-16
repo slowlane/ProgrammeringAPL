@@ -1,4 +1,4 @@
 ## Documentation
 
-- [User Manual (PDF)](docs/User_Manual.pdf)
-- [Architecture Diagram](docs/Architecture_Diagram.png)
+- [User Manual (PDF)](ProgrammeringAPL/docs/User_Manual.pdf)
+- [Architecture Diagram](ProgrammeringAPL/docs/Architecture_Diagram.png)
