@@ -1,4 +1,4 @@
-
+// project-create.js - Hanterar dynamisk tilläggning och borttagning av projektavsnitt
 $(document).ready(function () {
 
      // lägg till ett nytt teknologiavsnitt dynamiskt när "add tech" knappen klickas

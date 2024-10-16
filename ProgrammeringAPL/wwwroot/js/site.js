@@ -3,6 +3,11 @@
 
 // Write your JavaScript code.
 
+
+
+
+// site.js - Hanterar temaomkopplaren för läge mellan dag och natt
+
 if (localStorage.getItem('theme') === 'dark') {
     document.getElementById('dark-mode-style').disabled = false;
     document.getElementById('theme-toggle').innerHTML = '<span class="iconify" data-icon="mdi:weather-night"></span>';
@@ -11,6 +16,7 @@ if (localStorage.getItem('theme') === 'dark') {
     document.getElementById('theme-toggle').innerHTML = '<span class="iconify" data-icon="mdi:weather-sunny"></span>';
 }
 
+// Lägg till händelsehanterare för att byta mellan ljus- och mörkt läge, sparar användarens val i localstorage
 document.getElementById('theme-toggle').addEventListener('click', function () {
     const darkModeStyle = document.getElementById('dark-mode-style');
     if (darkModeStyle.disabled) {
