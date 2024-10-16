@@ -25,6 +25,10 @@ form textarea {
     min-width: 200px;
 }
 
+form input[type="submit"]{
+    margin-top: 30px;
+}
+
 form input[type="text"]:focus,
 form input[type="email"]:focus,
 form textarea:focus {

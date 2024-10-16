@@ -288,6 +288,15 @@ button {
     border-color: #0056b3;
 }
 
+#registerSubmit {
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+button.btn-close {
+    display: none;
+}
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~FOOTER~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 footer {
@@ -373,28 +382,28 @@ ul {
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MEDIA QUERIES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-@media (max-width: 600px) {
-    header {
-        font-size: 18px;
-    }
 
-    section {
-        padding: 10px;
-    }
-}
 
 @media (max-width: 768px) {
-    .navbar li a {
-        padding: 15px 15px;
+    .navbara li a {
+        padding: 15px 9px;
+    }
+
+    ul.navbara {
+
+        justify-content: center;
+        align-items: center;
+        font-size: 0.8em;
+
     }
 
     #login-register-nav {
-        flex-direction: column;
-        font-size: 0.7em;
+       /* flex-direction: column;*/
+        font-size: 0.9em;
     }
 
     header h1 {
-        font-size: 2em;
+        font-size: 1.6em;
     }
 
     section {
@@ -404,3 +413,70 @@ ul {
 }
 
 
+
+
+
+@media (max-width: 600px) {
+    header {
+        font-size: 18px;
+        width: 100%;
+    }
+
+    body {
+        width: 100%;
+    }
+
+    section {
+        padding: 10px;
+    }
+
+    main {
+        width: 100%;
+    }
+}
+
+@media (max-width: 450px) {
+    body {
+        font-size: 0.5em;
+        max-width: 100%;
+    }
+    header h1 {
+        font-size: 15px;
+    }
+
+    form label {
+        min-width: 50px;
+        font-size: 0.5em;
+    }
+
+    form input {
+        min-width: 50px;
+        width: 150px;
+    }
+
+    form textarea {
+        min-width: 50px;
+        width: 150px;
+    }
+
+    .container input[type="submit"] {
+        min-width: 50px;
+        width: 100%;
+        font-size: 0.5em;
+        padding: 10px;
+    }
+
+    .navbara li a {
+        padding: 10px 7px;
+    }
+
+    ul.navbara {
+        justify-content: center;
+        align-items: center;
+        font-size: 0.6em;
+    }
+
+    footer div.container {
+        font-size: 0.5em;
+    }
+}
